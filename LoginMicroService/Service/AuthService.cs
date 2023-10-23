@@ -16,5 +16,10 @@ namespace AuthMicroService.Service
         {
             return await authRepository.CreateUser(user, password);
         }
+
+        public async Task<IdentityUser?> FindUserByEmail(string email)
+        {
+            return await authRepository.FindUserByEmail(email);
+        }
     }
 }

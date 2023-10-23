@@ -17,27 +17,48 @@ namespace AuthMicroService.Controllers
             this.authService = authService;
         }
 
-        [HttpPost]
+        [HttpPost("Create-user")]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserDto userData)
         {
-            var result = new CreateUserResponse { Succeeded = false, Email = userData.Email, PasswordHash = "", CustomerId = Guid.Empty};
-            var response = new IdentityResult();
-            if (userData != null)
+            try
             {
-                var user = new IdentityUser { Email = userData.Email, UserName = userData.Email };
-                response = await authService.CreateUser(user, userData.Password);
-                if(response.Succeeded)
+                var result = new CreateUserResponse { Succeeded = false, Email = userData.Email, PasswordHash = "", CustomerId = Guid.Empty };
+                var response = new IdentityResult();
+                if (userData != null)
                 {
-                    result = new CreateUserResponse
+                    var user = new IdentityUser { Email = userData.Email, UserName = userData.Email };
+                    response = await authService.CreateUser(user, userData.Password);
+                    if (response.Succeeded)
                     {
-                        Succeeded = true,
-                        Email = user.Email,
-                        PasswordHash = user.PasswordHash ?? "",
-                        CustomerId = Guid.Parse(user.Id)
-                    };
+                        result = new CreateUserResponse
+                        {
+                            Succeeded = true,
+                            Email = user.Email,
+                            PasswordHash = user.PasswordHash ?? "",
+                            CustomerId = Guid.Parse(user.Id)
+                        };
+                    }
                 }
+                return result.Succeeded ? Ok(result) : BadRequest(response);
             }
-            return result.Succeeded ? Ok(result) : BadRequest(response);
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { ex.Message });
+            }
+        }
+
+        [HttpPost("find-user-by-email")]
+        public async Task<IActionResult> FindUser([FromBody] GetUserByEmailDto userDetails)
+        {
+            try
+            {
+                var user = await authService.FindUserByEmail(userDetails.Email);
+                return user != null ? Ok() : NotFound();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { ex.Message });
+            }
         }
     }
 }

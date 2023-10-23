@@ -5,5 +5,6 @@ namespace AuthMicroService.Repository
     public interface IAuthRepository
     {
         Task<IdentityResult> CreateUser(IdentityUser user, string password);
+        Task<IdentityUser?> FindUserByEmail(string email);
     }
 }
