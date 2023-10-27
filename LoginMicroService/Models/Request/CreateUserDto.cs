@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace AuthMicroService.Models
+namespace AuthMicroService.Models.Request
 {
     public class CreateUserDto
     {

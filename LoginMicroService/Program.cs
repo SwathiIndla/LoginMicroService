@@ -1,6 +1,6 @@
-using AuthMicroService.DbContext;
 using AuthMicroService.Repository;
 using AuthMicroService.Service;
+using ECommerce.DbContext;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,15 +13,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<AuthMicroServiceDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("AuthMicroServiceDbConnection")));
+builder.Services.AddDbContext<ECommerceAuthDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("ECommerceAuthDbConnection")));
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<AuthMicroServiceDbContext>()
+    .AddEntityFrameworkStores<ECommerceAuthDbContext>()
     .AddDefaultTokenProviders();
 //builder.Services.AddIdentityCore<IdentityUser>()
 //    .AddRoles<IdentityRole>()

@@ -1,4 +1,4 @@
-﻿namespace AuthMicroService.Models
+﻿namespace AuthMicroService.Models.Response
 {
     public class CreateUserResponse
     {

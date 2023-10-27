@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace AuthMicroService.Migrations
+namespace ECommerce.Migrations
 {
     /// <inheritdoc />
-    public partial class AuthMicroServiceDbCreation : Migration
+    public partial class AddingECommerceAuthDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -163,8 +163,8 @@ namespace AuthMicroService.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0c9f500b-e8fb-4fb1-abef-6072a354674f", "0c9f500b-e8fb-4fb1-abef-6072a354674f", "Customer", "CUSTOMER" },
-                    { "b8880864-ce0d-4e80-adb6-05ad1d9ca5d7", "b8880864-ce0d-4e80-adb6-05ad1d9ca5d7", "Seller", "SELLER" }
+                    { "52100cc0-a691-43d2-a257-4548e16d99c1", "52100cc0-a691-43d2-a257-4548e16d99c1", "Customer", "CUSTOMER" },
+                    { "ea36e780-bc9d-4d23-89dd-ff8b92fcb92a", "ea36e780-bc9d-4d23-89dd-ff8b92fcb92a", "Seller", "SELLER" }
                 });
 
             migrationBuilder.CreateIndex(

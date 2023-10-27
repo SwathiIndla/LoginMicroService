@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace AuthMicroService.DbContext
+namespace ECommerce.DbContext
 {
-    public class AuthMicroServiceDbContext : IdentityDbContext
+    public class ECommerceAuthDbContext : IdentityDbContext
     {
-        public AuthMicroServiceDbContext(DbContextOptions<AuthMicroServiceDbContext> dbOptions) : base(dbOptions)
+        public ECommerceAuthDbContext(DbContextOptions<ECommerceAuthDbContext> dbOptions):base(dbOptions)
         {
             
         }
@@ -15,8 +15,8 @@ namespace AuthMicroService.DbContext
         {
             base.OnModelCreating(builder);
 
-            var customerRoleId = "0c9f500b-e8fb-4fb1-abef-6072a354674f";
-            var sellerRoleId = "b8880864-ce0d-4e80-adb6-05ad1d9ca5d7";
+            var customerRoleId = "52100cc0-a691-43d2-a257-4548e16d99c1";
+            var sellerRoleId = "ea36e780-bc9d-4d23-89dd-ff8b92fcb92a";
 
             var roles = new List<IdentityRole>
             {
