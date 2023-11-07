@@ -12,5 +12,6 @@ namespace AuthMicroService.Repository
         Task<IList<string>> GetRoles(IdentityUser user);
         Task<IdentityResult> AddRoles(IdentityUser user, string[] roles);
         Task<IdentityResult> DeleteUser(IdentityUser user);
+        Task<IdentityUser?> FindUserById(Guid customerId);
     }
 }

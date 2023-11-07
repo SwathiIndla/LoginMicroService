@@ -37,6 +37,11 @@ namespace AuthMicroService.Service
             return await authRepository.FindUserByEmail(email);
         }
 
+        public async Task<IdentityUser?> FindUserById(Guid customerId)
+        {
+            return await authRepository.FindUserById(customerId);
+        }
+
         public async Task<string> GeneratePasswordResetToken(IdentityUser user)
         {
             return await authRepository.GeneratePasswordResetToken(user);

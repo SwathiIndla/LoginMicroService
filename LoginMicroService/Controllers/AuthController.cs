@@ -153,13 +153,40 @@ namespace AuthMicroService.Controllers
         [HttpPost("delete-user")]
         public async Task<IActionResult> DeleteUser([FromBody] GetUserByEmailDto userDetails)
         {
-            var user = await authService.FindUserByEmail(userDetails.Email);
-            var result = IdentityResult.Failed(new IdentityError { Description = "User Deletion Failed" });
-            if (user != null)
+            try
             {
-                result = await authService.DeleteUser(user);
+                var user = await authService.FindUserByEmail(userDetails.Email);
+                var result = IdentityResult.Failed(new IdentityError { Description = "User Deletion Failed" });
+                if (user != null)
+                {
+                    result = await authService.DeleteUser(user);
+                }
+                return result.Succeeded ? Ok() : BadRequest();
             }
-            return result.Succeeded ? Ok() : BadRequest();
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { ex.Message });
+            }
+        }
+
+        [HttpPut("add-role/{customerId}")]
+        public async Task<IActionResult> AddRole([FromRoute] Guid customerId)
+        {
+            try
+            {
+                var user = await authService.FindUserById(customerId);
+                var result = IdentityResult.Failed(new IdentityError { Description = "Role addition failed..!!" });
+                var role = new string[] { "Seller"};
+                if (user != null)
+                {
+                    result = await authService.AddRoles(user, role);
+                }
+                return result.Succeeded ? Ok() : BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { ex.Message });
+            }
         }
     }
 }

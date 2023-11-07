@@ -46,6 +46,11 @@ namespace AuthMicroService.Repository
             return await userManager.GetRolesAsync(user);
         }
 
+        public async Task<IdentityUser?> FindUserById(Guid customerId)
+        {
+            return await userManager.FindByIdAsync(customerId.ToString());
+        }
+
         public async Task<IdentityResult> ResetPassword(IdentityUser user, string token, string newPassword)
         {
             return await userManager.ResetPasswordAsync(user, token, newPassword);
