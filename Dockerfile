@@ -9,7 +9,7 @@ COPY LoginMicroService/Program.cs /app/
 
 COPY LoginMicroService/AuthMicroService.csproj /app/
 
-
+COPY LoginMicroService/ .
 
 
 RUN dotnet restore
