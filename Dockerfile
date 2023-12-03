@@ -6,9 +6,9 @@ WORKDIR /app
 
 # Copy the .csproj and restore dependencies (optimizing caching)
 COPY LoginMicroService/Program.cs /app/
-COPY LoginMicroService/WeatherForecast.cs /app/
+#COPY LoginMicroService/WeatherForecast.cs /app/
 
-COPY LoginMicroService/AuthMicroService.csproj /app/
+COPY LoginMicroService/AuthMicroService.csproj /app/LoginMicroService
 
 COPY LoginMicroService/ .
 
