@@ -18,7 +18,7 @@ RUN dotnet restore
 COPY . ./
 
 # Build the application inside the container
-RUN dotnet publish Program.cs -c Release -o out
+RUN dotnet publish  -c Release -o out
 
 # Create a runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
