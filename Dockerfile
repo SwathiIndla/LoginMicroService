@@ -8,7 +8,7 @@ WORKDIR /app
 COPY LoginMicroService/Program.cs /app/
 #COPY LoginMicroService/WeatherForecast.cs /app/
 
-COPY LoginMicroService/AuthMicroService.csproj /app/LoginMicroService
+COPY LoginMicroService/AuthMicroService.csproj /app/LoginMicroService/
 
 COPY LoginMicroService/ .
 
