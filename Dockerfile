@@ -6,6 +6,7 @@ WORKDIR /app
 
 # Copy the .csproj and restore dependencies (optimizing caching)
 COPY LoginMicroService/Program.cs /app/
+COPY LoginMicroService/WeatherForecast.cs /app/
 
 COPY LoginMicroService/AuthMicroService.csproj /app/
 
@@ -19,7 +20,7 @@ COPY . ./
 
 # Build the application inside the container
 
-RUN dotnet publish -c Release -o out
+RUN dotnet publish WeatherForecast.cs -c Release -o out
 # Create a runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
