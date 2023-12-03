@@ -6,16 +6,10 @@ WORKDIR /app
 
 # Copy the .csproj and restore dependencies (optimizing caching)
 COPY LoginMicroService/Program.cs /app/
-COPY LoginMicroService/ .
 
-# ... (other stages of your Dockerfile)
 
-FROM build AS publish
-WORKDIR /src
-COPY . .
-RUN dotnet publish LoginMicroService/AuthMicroService.csproj -c Release -o /app/publish
 
-# ... (rest of your Dockerfile)
+
 
 
 RUN dotnet restore
