@@ -19,7 +19,7 @@ COPY . ./
 
 # Build the application inside the container
 
-RUN dotnet publish AuthMicroService.csproj -c Release -o out
+RUN dotnet publish AuthMicroService.sln -c Release -o out
 # Create a runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
