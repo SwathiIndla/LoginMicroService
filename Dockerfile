@@ -5,15 +5,15 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
 WORKDIR /app
 
 # Copy the .csproj and restore dependencies (optimizing caching)
-COPY LoginMicroService/Program.cs /app/
+#COPY LoginMicroService/Program.cs /app/
 #COPY LoginMicroService/WeatherForecast.cs /app/
 
-COPY LoginMicroService/AuthMicroService.csproj /app/LoginMicroService/
+#COPY LoginMicroService/AuthMicroService.csproj /app/LoginMicroService/
 
-COPY LoginMicroService/ .
+#COPY LoginMicroService/ .
 
-
-RUN dotnet restore
+COPY . .
+RUN dotnet restore LoginMicroService/AuthMicroService.csproj
 
 # Copy the remaining application code
 COPY . ./
