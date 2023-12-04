@@ -28,4 +28,4 @@ COPY --from=build-env /app/out .
 EXPOSE 80
 
 # Define the entry point for the application
-ENTRYPOINT ["dotnet", "Login.dll"]
+ENTRYPOINT ["dotnet", "LoginMicroService.dll"]
